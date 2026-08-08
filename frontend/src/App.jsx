@@ -1,7 +1,12 @@
+import Navbar from "./components/layout/Navbar"
+import AllRoutes from "./routes/AllRoutes"
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Navbar/>
+     <AllRoutes/>
+    </div>
   )
 }
 
