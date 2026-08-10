@@ -1,0 +1,61 @@
+.todo-list {
+    .header {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        input{
+            padding: 10px 60px;
+            border-radius: 6px;
+            border: none;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+
+        button{
+         padding: 10px 40px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    }
+
+    .todo-cont {
+
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+        background: #f8fafc;
+        // min-height: 100vh;
+
+
+
+
+        .todo-card {
+
+            border: none;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: translate(6px, 4px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .action-btn{
+                display: flex;
+                gap: 10px;
+            }
+
+
+
+        }
+    }
+}
