@@ -3,6 +3,7 @@ import ProductForm from "./ProductForm"
 import ProductCard from "./ProductCard"
 
 import "../../../styles/productcard.scss"
+import ToastMessage from "../../../components/common/ToastMessage"
 
 const ProductList = () => {
 
@@ -24,6 +25,8 @@ const ProductList = () => {
 
       <div className="header">
         <h3>Product Listing..</h3>
+
+       <ToastMessage/>
 
         <button onClick={() => setOpenModal(true)} className="header-btn">Add</button>
       </div>

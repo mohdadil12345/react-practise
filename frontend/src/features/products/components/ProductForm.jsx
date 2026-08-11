@@ -28,8 +28,11 @@ const ProductForm = ({ productData, setProductData, setOpenModal, editData, setE
 
   const handle_form = (data) => {
 
+    console.log("adil-1", data);
+
+
     if (editData) {
-      update_data()
+      update_data(data)
     } else {
       add_data(data)
     }
@@ -47,20 +50,32 @@ const ProductForm = ({ productData, setProductData, setOpenModal, editData, setE
     setProductData([...productData, obj])
   }
 
-  const update_data = (editData) => {
-    setProductData(editData)
-  }
+const update_data = (data) => {
+  const update_prod = productData.map((item) =>
+    item.id === data.id
+      ? { ...item, ...data }
+      : item
+  )
+
+  setProductData(update_prod)
+  setEditData(null)
+}
 
 
   const handle_reset = () => {
     setOpenModal(false)
-    reset()
+    reset(prodInitial)
     setEditData(null)
 
   }
 
   useEffect(() => {
-    reset(editData)
+    if(editData) {
+
+      reset(editData)
+    }else{
+      reset(prodInitial)
+    }
   }, [editData])
 
 
@@ -89,7 +104,7 @@ const ProductForm = ({ productData, setProductData, setOpenModal, editData, setE
 
         {errors.category && <p style={{ color: "red" }}>{errors.category.message}</p>}
 
-        <input type='number' placeholder='price' {...register("price", { required: "price is required" }, { valueAsNumber: true })} />
+        <input type='number' placeholder='price' {...register("price", { required: "price is required" , valueAsNumber: true})} />
         {errors.price && <p style={{ color: "red" }}>{errors.price.message}</p>}
 
         <input type="number" placeholder='stock' {...register("stock", { required: "stock is required" })} />
