@@ -3,12 +3,14 @@ import ProductForm from "./ProductForm"
 import ProductCard from "./ProductCard"
 
 import "../../../styles/productcard.scss"
+import ToastMessage from "../../../components/common/ToastMessage"
 
 const ProductList = () => {
 
   const [productData, setProductData] = useState(JSON.parse(localStorage.getItem("prod-data")) || [])
 
-  const [openModal, setOpenModal] = useState(true)
+  const [openModal, setOpenModal] = useState(false)
+  const [editData, setEditData] = useState(null)
 
 
   useEffect(() => {
@@ -24,12 +26,14 @@ const ProductList = () => {
       <div className="header">
         <h3>Product Listing..</h3>
 
+       <ToastMessage/>
+
         <button onClick={() => setOpenModal(true)} className="header-btn">Add</button>
       </div>
 
-      {openModal && <ProductForm productData={productData} setProductData={setProductData} setOpenModal = {setOpenModal} />}
+      {openModal && <ProductForm productData={productData} setProductData={setProductData} setOpenModal = {setOpenModal} editData = {editData} setEditData = {setEditData}/>}
 
-      <ProductCard productData={productData} setProductData={setProductData} />
+      <ProductCard productData={productData} setProductData={setProductData} editData = {editData} setEditData = {setEditData} setOpenModal={setOpenModal}/>
 
 
     </div>

@@ -2,14 +2,30 @@
 import { useEffect } from "react"
 import "../../../styles/productcard.scss"
 
-const ProductCard = ({ productData, setProductData }) => {
+const ProductCard = ({ productData, setProductData, editData, setEditData, setOpenModal }) => {
+
+
+// edit
+const handle_edit = (ele) => {
+  setEditData({...ele})
+   setOpenModal(true)
+
+}
+
+
+// handle_delete
+const handle_delete = (id) => {
+    let filter_data = productData.filter((ele) => ele.id !== id)
+    setProductData(filter_data)
+}
+
 
   return (
     <>
 
       <div className="prod-card">
-        {productData.length == 0 ? <h3>No Products Available.....</h3> : productData?.map((ele) => (
-          <div className="prod-item">
+        {productData?.length == 0 ? <h3>No Products Available.....</h3> : productData?.map((ele) => (
+          <div key={ele.id} className="prod-item">
             <h3>Title :{ele.title}</h3>
 
             <div className="img-div">
@@ -22,8 +38,8 @@ const ProductCard = ({ productData, setProductData }) => {
             <p>Rating : {ele.rating}</p>
 
             <div className="action-btn">
-              <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => handle_edit(ele)}>Edit</button>
+              <button onClick={() => handle_delete(ele.id)}>Delete</button>
             </div>
 
           </div>
