@@ -3,10 +3,17 @@
 
     position: fixed;
     width: 100%;
-    height: 100vh;
     background-color: rgba(0, 0, 0,0.5);
     top: 0px;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    height: 100vh;
+
+
 
 .form-div {
     display: flex;
@@ -14,11 +21,13 @@
     border: none;
     flex-direction: column;
     padding: 20px;
-    width: 400px;
+    width: 450px;
     margin: 20px auto;
     gap: 20px;
     border-radius: 8px;
     background-color: white;
+
+
 
     h3 {
         text-align: center;

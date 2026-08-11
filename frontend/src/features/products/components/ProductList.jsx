@@ -8,7 +8,7 @@ const ProductList = () => {
 
   const [productData, setProductData] = useState(JSON.parse(localStorage.getItem("prod-data")) || [])
 
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(true)
 
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ProductList = () => {
         <button onClick={() => setOpenModal(true)} className="header-btn">Add</button>
       </div>
 
-      {openModal && <ProductForm productData={productData} setProductData={setProductData} />}
+      {openModal && <ProductForm productData={productData} setProductData={setProductData} setOpenModal = {setOpenModal} />}
 
       <ProductCard productData={productData} setProductData={setProductData} />
 

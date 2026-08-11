@@ -8,7 +8,7 @@ const ProductCard = ({ productData, setProductData }) => {
     <>
 
       <div className="prod-card">
-        {productData?.map((ele) => (
+        {productData.length == 0 ? <h3>No Products Available.....</h3> : productData?.map((ele) => (
           <div className="prod-item">
             <h3>Title :{ele.title}</h3>
 

@@ -7,14 +7,14 @@ import ProductList from './ProductList'
 export const prodInitial = {
   title: "",
   category: "",
-  price: 0,
-  stock: 0,
-  rating: 0,
+  price: "",
+  stock: "",
+  rating: "",
   image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRCSfwnv3WeBM1vlNCsNVA5XQox93AUwXCk3n48YeYZSzltidySxqb4VvTvKhoYNSNTkZVSlhzFV609fDdwafWG_qoCv8E6dxlYokvmMHe4iqLl3TPM0r4hxQ"
 }
 
 
-const ProductForm = ({productData, setProductData}) => {
+const ProductForm = ({productData, setProductData, setOpenModal}) => {
 
   const {
 
@@ -23,7 +23,7 @@ const ProductForm = ({productData, setProductData}) => {
     reset,
     formState: { errors, isValidating, isSubmitting }
 
-  } = useForm({ defaultValues: prodInitial })
+  } = useForm({ mode : "onChange", defaultValues: prodInitial })
 
 
   const handle_form = (data) => {
@@ -40,6 +40,11 @@ const ProductForm = ({productData, setProductData}) => {
   }
   
 
+  const handle_reset = () => {
+    setOpenModal(false)
+    reset()
+  }
+
 
   return (
     <div className='form-container'>
@@ -52,18 +57,24 @@ const ProductForm = ({productData, setProductData}) => {
         </div>
 
 
-        <input type="text" placeholder='title' {...register("title")} />
+        <input type="text" placeholder='title' {...register("title", {required : "title is required", minLength : {value : 6, message:"6 characters is required.."}})} />
+        {errors.title &&  <p style={{color:"red"}}>{errors.title.message}</p>}
 
-        <select {...register("category")}>
+
+        <select {...register("category", {required : "category is required"})}>
           <option value="">Select Category</option>
           <option value="laptop">Clothing</option>
           <option value="accessories">Accessories</option>
           <option value="laptop">Laptop</option>
         </select>
 
-        <input type='number' placeholder='price' {...register("price", {valueAsNumber:true})} />
+        {errors.category && <p style={{color:"red"}}>{errors.category.message}</p>}
 
-        <input type="number" placeholder='stock' {...register("stock")} />
+        <input type='number' placeholder='price' {...register("price",  {required : "price is required"}, {valueAsNumber:true})} />
+        {errors.price && <p style={{color:"red"}}>{errors.price.message}</p>}
+
+        <input type="number" placeholder='stock' {...register("stock", {required : "stock is required"})} />
+        {errors.stock && <p style={{color:"red"}}>{errors.stock.message}</p>}
 
         <input type="number" placeholder='rating' {...register("rating")}/>
 
@@ -71,7 +82,7 @@ const ProductForm = ({productData, setProductData}) => {
 
 
         <div className='action-btn'>
-          <button onClick={() => reset()} className='clear-btn'>Cancel</button>
+          <button onClick={handle_reset} className='clear-btn'>Cancel</button>
           <button className='submit-btn'>Add</button>
         </div>
 
