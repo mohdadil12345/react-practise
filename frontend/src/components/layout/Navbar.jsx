@@ -16,6 +16,8 @@ const Navbar = () => {
        <Link to={"/counter"}>Counter</Link>
       <Link to={"/products"}>Products</Link>
       <Link to={"/todos"}>Todo</Link>
+      <Link to={"/calculator"}>Calculator</Link>
+      <Link to={"/timer"}>Timer</Link>
      </div>
 
 

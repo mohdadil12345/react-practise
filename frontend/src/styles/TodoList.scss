@@ -5,15 +5,15 @@
         justify-content: center;
         gap: 10px;
 
-        input{
+        input {
             padding: 10px 60px;
             border-radius: 6px;
             border: none;
-         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         }
 
-        button{
-         padding: 10px 40px;
+        button {
+            padding: 10px 40px;
             border-radius: 6px;
             cursor: pointer;
         }
@@ -49,9 +49,32 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             }
 
-            .action-btn{
+            .action-btn {
                 display: flex;
                 gap: 10px;
+
+                button {
+                    padding: 8px 20px;
+                    border-radius: 8px;
+                    border: none;
+                    cursor: pointer;
+                    color: white;
+                    font-size: 600;
+                    font-weight: bold;
+                }
+
+                #edit-btn {
+                    background-color: blue;
+                }
+
+                #delete-btn {
+                    background-color: red;
+                }
+            }
+
+            .title-div {
+                display: flex;
+                justify-content: space-between;
             }
 
 

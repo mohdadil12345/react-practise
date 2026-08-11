@@ -1,20 +1,24 @@
 import { Route, Routes } from "react-router-dom"
 import HomePage from "../pages/HomePage"
-import ProductsPage from "../features/products/pages/ProductsPage"
 import LoginPage from "../pages/LoginPage"
 import SignupPage from "../pages/SignupPage"
 import NotFoundPage from "../pages/NotFoundPage"
 import TodoList from "../features/todo/TodoList"
 import CounterApp from "../features/counter/CounterApp"
+import Calculator from "../features/calculator/Calculator"
+import Timers from "../features/timer/Timers"
+import ProductList from "../features/products/components/ProductList"
 
 const AllRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path = "/" element={<HomePage/>}/>
-        <Route path = "/products" element={<ProductsPage/>}/>
+        <Route path = "/products" element={<ProductList/>}/>
         <Route path = "/todos" element={<TodoList/>}/>
         <Route path = "/counter" element={<CounterApp/>}/>
+        <Route path = "/calculator" element={<Calculator/>}/>
+        <Route path = "/timer" element={<Timers/>}/>
 
 
         <Route path = "/login" element={<LoginPage/>}/>
