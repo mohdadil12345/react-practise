@@ -14,7 +14,7 @@ export const prodInitial = {
 }
 
 
-const ProductForm = ({productData, setProductData, setOpenModal}) => {
+const ProductForm = ({ productData, setProductData, setOpenModal, editData, setEditData }) => {
 
   const {
 
@@ -23,27 +23,46 @@ const ProductForm = ({productData, setProductData, setOpenModal}) => {
     reset,
     formState: { errors, isValidating, isSubmitting }
 
-  } = useForm({ mode : "onChange", defaultValues: prodInitial })
+  } = useForm({ mode: "onChange", defaultValues: prodInitial })
 
 
   const handle_form = (data) => {
+
+    if (editData) {
+      update_data()
+    } else {
       add_data(data)
+    }
+    setOpenModal(false)
+    reset()
+
   }
 
   const add_data = (data) => {
 
     let obj = {
-      id : Date.now(),
+      id: Date.now(),
       ...data
     }
-     setProductData([...productData, obj])
+    setProductData([...productData, obj])
   }
-  
+
+  const update_data = (editData) => {
+    setProductData(editData)
+  }
+
 
   const handle_reset = () => {
     setOpenModal(false)
     reset()
+    setEditData(null)
+
   }
+
+  useEffect(() => {
+    reset(editData)
+  }, [editData])
+
 
 
   return (
@@ -57,33 +76,33 @@ const ProductForm = ({productData, setProductData, setOpenModal}) => {
         </div>
 
 
-        <input type="text" placeholder='title' {...register("title", {required : "title is required", minLength : {value : 6, message:"6 characters is required.."}})} />
-        {errors.title &&  <p style={{color:"red"}}>{errors.title.message}</p>}
+        <input type="text" placeholder='title' {...register("title", { required: "title is required", minLength: { value: 6, message: "6 characters is required.." } })} />
+        {errors.title && <p style={{ color: "red" }}>{errors.title.message}</p>}
 
 
-        <select {...register("category", {required : "category is required"})}>
+        <select {...register("category", { required: "category is required" })}>
           <option value="">Select Category</option>
           <option value="laptop">Clothing</option>
           <option value="accessories">Accessories</option>
           <option value="laptop">Laptop</option>
         </select>
 
-        {errors.category && <p style={{color:"red"}}>{errors.category.message}</p>}
+        {errors.category && <p style={{ color: "red" }}>{errors.category.message}</p>}
 
-        <input type='number' placeholder='price' {...register("price",  {required : "price is required"}, {valueAsNumber:true})} />
-        {errors.price && <p style={{color:"red"}}>{errors.price.message}</p>}
+        <input type='number' placeholder='price' {...register("price", { required: "price is required" }, { valueAsNumber: true })} />
+        {errors.price && <p style={{ color: "red" }}>{errors.price.message}</p>}
 
-        <input type="number" placeholder='stock' {...register("stock", {required : "stock is required"})} />
-        {errors.stock && <p style={{color:"red"}}>{errors.stock.message}</p>}
+        <input type="number" placeholder='stock' {...register("stock", { required: "stock is required" })} />
+        {errors.stock && <p style={{ color: "red" }}>{errors.stock.message}</p>}
 
-        <input type="number" placeholder='rating' {...register("rating")}/>
+        <input type="number" placeholder='rating' {...register("rating")} />
 
         <input type="text" placeholder='image...' {...register("image")} />
 
 
         <div className='action-btn'>
           <button onClick={handle_reset} className='clear-btn'>Cancel</button>
-          <button className='submit-btn'>Add</button>
+          <button className='submit-btn'>{editData ? "update" : "Add"}</button>
         </div>
 
       </form>
