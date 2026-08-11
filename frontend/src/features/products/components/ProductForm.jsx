@@ -10,14 +10,12 @@ export const prodInitial = {
   price: "",
   stock: "",
   rating: "",
-  image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRCSfwnv3WeBM1vlNCsNVA5XQox93AUwXCk3n48YeYZSzltidySxqb4VvTvKhoYNSNTkZVSlhzFV609fDdwafWG_qoCv8E6dxlYokvmMHe4iqLl3TPM0r4hxQ"
+  image: ""
 }
-
 
 const ProductForm = ({ productData, setProductData, setOpenModal, editData, setEditData }) => {
 
   const {
-
     register,
     handleSubmit,
     reset,
@@ -27,9 +25,6 @@ const ProductForm = ({ productData, setProductData, setOpenModal, editData, setE
 
 
   const handle_form = (data) => {
-
-    console.log("adil-1", data);
-
 
     if (editData) {
       update_data(data)

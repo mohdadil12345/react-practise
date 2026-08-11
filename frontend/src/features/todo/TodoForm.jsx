@@ -46,11 +46,9 @@ const TodoForm = ({ todos, formData, setTodos, setFormdata, editData, setEditDat
                 priority: formData.priority,
                 completed: formData.completed
             }
-
             setTodos([...todos, obj])
         }
         setFormdata(initial)
-
     }
 
     return (
