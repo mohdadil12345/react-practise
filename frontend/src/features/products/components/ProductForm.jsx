@@ -92,7 +92,7 @@ const update_data = (data) => {
 
         <select {...register("category", { required: "category is required" })}>
           <option value="">Select Category</option>
-          <option value="laptop">Clothing</option>
+          <option value="clothing">Clothing</option>
           <option value="accessories">Accessories</option>
           <option value="laptop">Laptop</option>
         </select>

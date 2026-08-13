@@ -13,6 +13,7 @@ const ProductList = () => {
   const [editData, setEditData] = useState(null)
 
   const [searchval, setsearchval] = useState("")
+  const [category, setcategory] = useState("all")
 
   const [pageNo, setPageNo] = useState(1)
   const [limit, setlimit] = useState(4)
@@ -24,20 +25,39 @@ const ProductList = () => {
 
 
   // search...
-  const filter_products = productData.filter((item) => item.title.toLowerCase().includes(searchval.toLocaleLowerCase()) ||
-   item.category.toLowerCase().includes(searchval.toLowerCase())
-)
+const filteredProducts = productData.filter((item) => {
+
+  console.log("item", item);
+
+  const matchSearch = item.title.toLowerCase().includes(searchval.toLowerCase()) ||
+    item.category.toLowerCase().includes(searchval.toLowerCase()) 
+
+  console.log("matchSearch", matchSearch);
+
+
+ const matchCategory = category === "all"  || item.category == category
+
+ console.log("matchCategory", matchCategory);
+
+ return matchSearch && matchCategory
+
+});
+
+
 
 // pagination
-const totalPage = Math.ceil(filter_products.length/limit)
+const totalPage = Math.ceil(filteredProducts.length/limit)
 const startIndex = (pageNo - 1) * limit
 const endIndex = startIndex + limit
 
-const paginatedProducts = filter_products.slice(startIndex, endIndex)
+const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
+
 
 useEffect(() => {
   setPageNo(1);
-}, [searchval]);
+}, [searchval, category]);
+
+
 
   return (
     <div className="product-list">
@@ -46,6 +66,13 @@ useEffect(() => {
         <h3>Product Listing..</h3>
 
        <input value = {searchval} onChange={(e) => setsearchval(e.target.value)} placeholder="search by title and category..."/>
+       
+       <select value={category} name="" id="select-tag" onChange={(e) => setcategory(e.target.value)}>
+        <option value="all">Select Category</option>
+        <option value="clothing">Clothing</option>
+        <option value="accessories">Accessories</option>
+        <option value="laptop">Laptop</option>
+       </select>
 
         <button onClick={() => setOpenModal(true)} className="header-btn">Add</button>
       </div>
