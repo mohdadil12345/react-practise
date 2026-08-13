@@ -8,10 +8,10 @@ const HomePage = () => {
       </h5>
 
       <hr />
-      <DataTable/>
-      <hr />
         <h3>Character counter</h3>
-      <CharacterCounter/>
+      {/* <CharacterCounter/> */}
+
+      <hr />
     </div>
   )
 }

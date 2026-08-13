@@ -9,6 +9,7 @@ import Calculator from "../features/calculator/Calculator"
 import Timers from "../features/timer/Timers"
 import ProductList from "../features/products/components/ProductList"
 import ProductDetails from "../features/products/pages/ProductDetails"
+import DataTable from "../features/datatable/DataTable"
 
 const AllRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AllRoutes = () => {
         <Route path = "/calculator" element={<Calculator/>}/>
         <Route path = "/timer" element={<Timers/>}/>
         <Route path = "/products/:id" element={<ProductDetails/>}/>
+        <Route path = "/datatable" element={<DataTable/>}/>
 
 
         <Route path = "/login" element={<LoginPage/>}/>
