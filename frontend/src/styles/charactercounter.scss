@@ -1,0 +1,113 @@
+.character-counter {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h2 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 12px;
+    resize: vertical;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #1e293b;
+    background: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    outline: none;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(62, 75, 150, 0.25),
+        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px;
+    }
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+
+    .stat {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .label {
+        font-size: 0.85rem;
+        color: #64748b;
+        font-weight: 600;
+      }
+
+      .value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+
+      &.remaining.warn .value {
+        color: #ca8a04;
+      }
+
+      &.remaining.over .value {
+        color: #b91c1c;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    button {
+      padding: 10px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgb(62, 75, 150);
+      color: white;
+      font-weight: 600;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+      &:hover:not(:disabled) {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .limit-hint {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  }
+}

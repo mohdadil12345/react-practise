@@ -1,7 +1,10 @@
+import CharacterCounter from "./CharacterCounter"
 
 const CounterApp = () => {
   return (
-    <div>CounterApp</div>
+    <div>
+      <CharacterCounter />
+    </div>
   )
 }
 
