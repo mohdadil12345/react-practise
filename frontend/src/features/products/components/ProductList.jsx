@@ -14,6 +14,7 @@ const ProductList = () => {
 
   const [searchval, setsearchval] = useState("")
   const [category, setcategory] = useState("all")
+  const [sort, setSort] = useState("")
 
   const [pageNo, setPageNo] = useState(1)
   const [limit, setlimit] = useState(4)
@@ -25,24 +26,27 @@ const ProductList = () => {
 
 
   // search...
-const filteredProducts = productData.filter((item) => {
-
-  console.log("item", item);
+let  filteredProducts = productData.filter((item) => {
 
   const matchSearch = item.title.toLowerCase().includes(searchval.toLowerCase()) ||
     item.category.toLowerCase().includes(searchval.toLowerCase()) 
 
-  console.log("matchSearch", matchSearch);
-
-
  const matchCategory = category === "all"  || item.category == category
-
- console.log("matchCategory", matchCategory);
 
  return matchSearch && matchCategory
 
 });
 
+// sorting
+if(sort) {
+filteredProducts = [...filteredProducts].sort((a,b) => {
+
+    if(sort === "asc") return a.price - b.price
+    if(sort == "desc") return b.price - a.price
+
+    return 0
+})
+}
 
 
 // pagination
@@ -52,10 +56,9 @@ const endIndex = startIndex + limit
 
 const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
 
-
 useEffect(() => {
   setPageNo(1);
-}, [searchval, category]);
+}, [searchval, category, sort]);
 
 
 
@@ -72,6 +75,12 @@ useEffect(() => {
         <option value="clothing">Clothing</option>
         <option value="accessories">Accessories</option>
         <option value="laptop">Laptop</option>
+       </select>
+
+       <select value={sort} name="" id="select-tag" onChange={(e) => setSort(e.target.value)} >
+        <option value="">Sort By Price</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High To Low</option>
        </select>
 
         <button onClick={() => setOpenModal(true)} className="header-btn">Add</button>
