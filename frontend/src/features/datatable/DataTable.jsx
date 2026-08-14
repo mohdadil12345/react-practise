@@ -1,5 +1,5 @@
 
-import React, { useState , useMemo} from 'react'
+import React, { useState, useMemo } from 'react'
 
 import "../../styles/datatable.scss";
 
@@ -52,16 +52,23 @@ const DataTable = () => {
     direction: "asc"
   })
 
+  const handle_sort = (key) => {
+    let direction = "asc"
 
-  const handleSort = (key) => {
- 
+    if (sortConfig.key == key && sortConfig.direction == "asc") {
+      direction = "desc"
+    }
+
+    setSortConfig({
+      key,
+      direction
+    })
+
+
   };
-
-
 
   // icon
   const getSortIcon = (column) => {
-
 
     if (sortConfig.key !== column) {
       return "↕";
@@ -69,11 +76,32 @@ const DataTable = () => {
 
     return sortConfig.direction === "asc" ? "↑" : "↓"
 
-
   }
 
+  const sortedData = useMemo(() => {
+
+    const sorted = [...tableData]
+    if(!sortConfig.key) return sorted
+
+    sorted.sort((a, b) => {
+
+      const valueA = a[sortConfig.key]
+      const valueB = b[sortConfig.key]
 
 
+      // string sorting
+      if(typeof valueA == "string" && typeof valueB == "string"){
+        return sortConfig.direction == "asc" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
+      }
+
+          // number sorting
+      return sortConfig.direction == "asc" ? valueA - valueB:  valueB - valueA
+
+    })
+
+    return sorted
+
+  }, [tableData, sortConfig])
 
   return (
     <div className="table-container">
@@ -88,7 +116,7 @@ const DataTable = () => {
 
             <th onClick={() => handle_sort("name")}>Name {getSortIcon("name")}</th>
 
-            <th>Age</th>
+            <th onClick={() => handle_sort("age")}>Age {getSortIcon("age")}</th>
 
             <th>City</th>
 
@@ -97,7 +125,7 @@ const DataTable = () => {
         </thead>
 
         <tbody>
-          {tableData?.map((ele) => (
+          {sortedData?.map((ele) => (
             <tr key={ele.id}>
               <td>{ele.id}</td>
               <td>{ele.name}</td>

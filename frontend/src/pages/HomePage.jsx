@@ -8,8 +8,6 @@ const HomePage = () => {
       </h5>
 
       <hr />
-        <h3>Character counter</h3>
-      {/* <CharacterCounter/> */}
 
       <hr />
     </div>
