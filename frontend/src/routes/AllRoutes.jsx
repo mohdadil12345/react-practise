@@ -10,6 +10,7 @@ import Timers from "../features/timer/Timers"
 import ProductList from "../features/products/components/ProductList"
 import ProductDetails from "../features/products/pages/ProductDetails"
 import DataTable from "../features/datatable/DataTable"
+import DynamicField from "../pages/DynamicField"
 
 const AllRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AllRoutes = () => {
         <Route path = "/timer" element={<Timers/>}/>
         <Route path = "/products/:id" element={<ProductDetails/>}/>
         <Route path = "/datatable" element={<DataTable/>}/>
+        <Route path = "/dynamic-fields" element={<DynamicField/>}/>
 
 
         <Route path = "/login" element={<LoginPage/>}/>
