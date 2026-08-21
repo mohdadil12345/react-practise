@@ -11,6 +11,7 @@ import ProductList from "../features/products/components/ProductList"
 import ProductDetails from "../features/products/pages/ProductDetails"
 import DataTable from "../features/datatable/DataTable"
 import DynamicField from "../pages/DynamicField"
+import DebounceSearch from "../pages/DebounceSearch"
 
 const AllRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AllRoutes = () => {
         <Route path = "/products/:id" element={<ProductDetails/>}/>
         <Route path = "/datatable" element={<DataTable/>}/>
         <Route path = "/dynamic-fields" element={<DynamicField/>}/>
+        <Route path = "/debounce" element={<DebounceSearch/>}/>
 
 
         <Route path = "/login" element={<LoginPage/>}/>

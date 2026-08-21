@@ -1,5 +1,6 @@
 import DataTable from "../features/datatable/DataTable"
 import CharacterCounter from "../features/counter/CharacterCounter"
+import DebounceSearch from "./DebounceSearch"
 const HomePage = () => {
   return (
     <div>
@@ -8,6 +9,8 @@ const HomePage = () => {
       </h5>
 
       <hr />
+
+      <DebounceSearch/>
 
       <hr />
     </div>
