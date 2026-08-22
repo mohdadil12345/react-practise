@@ -1,0 +1,49 @@
+.debounce-container {
+    margin: 10px auto;
+
+    .inputdiv {
+        padding: 20px;
+        width: 500px;
+        margin: 10px auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        input {
+            padding: 8px;
+            border-radius: 6px;
+            width: 100%;
+        }
+    }
+}
+
+
+.Loader-comp {
+
+    margin: 50px auto;
+    width: 30px;
+
+    .loader {
+        width: 40px;
+        height: 40px;
+        border-top: 8px solid rgb(179, 190, 20);
+        border-bottom: 8px solid blue;
+        border-right: 8px solid green;
+        border-left: 8px solid rgb(221, 26, 172);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    
+
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 0deg and 360deg define the starting and ending rotation of the loader.

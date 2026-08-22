@@ -1,0 +1,51 @@
+.pagination-compo {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 10px 20px;
+    width: max-content;
+    margin: 30px auto;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+
+
+    .btnlist {
+        display: flex;
+        border: 1px solid green;
+        gap: 20px;
+        border: none;
+
+
+        button {
+            padding: 6px 20px;
+            cursor: pointer;
+            border: none;
+
+             &:hover{
+            background-color: tomato;
+            color: white;
+            font-size: 600;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+
+        }
+
+       
+    }
+
+    .limit {
+        select {
+            padding: 6px 20px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            border: none;
+            cursor: pointer;
+
+
+        }
+    }
+}

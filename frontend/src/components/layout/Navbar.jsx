@@ -18,6 +18,8 @@ const Navbar = () => {
       <Link to={"/todos"}>Todo</Link>
       <Link to={"/calculator"}>Calculator</Link>
       <Link to={"/timer"}>Timer</Link>
+      <Link to={"/datatable"}>DataTable</Link>
+      <Link to={"/dynamic-fields"}>Dynamic Fields</Link>
      </div>
 
 

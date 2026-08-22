@@ -1,0 +1,73 @@
+
+
+.digitalclock{
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  text-align: center;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  .h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .date {
+    margin: 0;
+    color: #64748b;
+    font-size: 1rem;
+  }
+
+  .time-display {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-variant-numeric: tabular-nums;
+
+    .digit,
+    .colon {
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgb(62, 75, 150);
+    }
+
+    .period {
+      margin-left: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #475569;
+      align-self: flex-end;
+      padding-bottom: 10px;
+
+    }
+
+
+
+  }
+
+    button {
+      margin-top: 4px;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgb(62, 75, 150);
+      color: white;
+      font-weight: 600;
+
+      &:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+}

@@ -3,11 +3,12 @@ import { useEffect, useState } from "react"
 import "../../styles/TodoList.scss"
 import TodoCard from "./TodoCard"
 import TodoForm from "./TodoForm"
+import KanbanBoard from "./KanbanBoard"
 
 export const initial = {
   title: "",
   priority: "",
-  completed: false,
+  status: false,
   description: "Finish the product listing page with filters"
 }
 
@@ -64,7 +65,7 @@ const TodoList = () => {
 
       <hr />
 
-      <h1>Todo with json server.......</h1>
+       <KanbanBoard todos={todos} setTodos={setTodos}/>
 
 
 

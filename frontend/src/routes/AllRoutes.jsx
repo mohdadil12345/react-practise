@@ -8,6 +8,11 @@ import CounterApp from "../features/counter/CounterApp"
 import Calculator from "../features/calculator/Calculator"
 import Timers from "../features/timer/Timers"
 import ProductList from "../features/products/components/ProductList"
+import ProductDetails from "../features/products/pages/ProductDetails"
+import DataTable from "../features/datatable/DataTable"
+import DynamicField from "../pages/DynamicField"
+import DebounceSearch from "../pages/DebounceSearch"
+import KanbanBoard from "../features/todo/KanbanBoard"
 
 const AllRoutes = () => {
   return (
@@ -19,6 +24,11 @@ const AllRoutes = () => {
         <Route path = "/counter" element={<CounterApp/>}/>
         <Route path = "/calculator" element={<Calculator/>}/>
         <Route path = "/timer" element={<Timers/>}/>
+        <Route path = "/products/:id" element={<ProductDetails/>}/>
+        <Route path = "/datatable" element={<DataTable/>}/>
+        <Route path = "/dynamic-fields" element={<DynamicField/>}/>
+        <Route path = "/debounce" element={<DebounceSearch/>}/>
+        <Route path = "/kanban" element={<KanbanBoard/>}/>
 
 
         <Route path = "/login" element={<LoginPage/>}/>
