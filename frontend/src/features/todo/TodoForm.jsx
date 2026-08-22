@@ -44,7 +44,7 @@ const TodoForm = ({ todos, formData, setTodos, setFormdata, editData, setEditDat
                 title: formData.title,
                 description: formData.description,
                 priority: formData.priority,
-                completed: formData.completed
+                status: formData.status
             }
             setTodos([...todos, obj])
         }
